@@ -1,6 +1,6 @@
 <template >
-    <div>
-        Meal List
+    <div class="text-purple-600">
+        By Name
     </div>
 </template>
 
