@@ -30,7 +30,7 @@
           <span class="line-underline" v-if="hoverElement === 'letters'"></span>
         </router-link>
         <router-link
-          :to="{ name: 'byIngredient' }"
+          :to="{ name: 'ingredients' }"
           class="header-link relative inline-flex items-center px-2 h-full transition-colors ease-in-out transform hover:translate-y-[-2px]"
           @mouseover="setHover('ingredients')"
           @mouseleave="resetHover()"
