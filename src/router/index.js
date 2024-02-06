@@ -1,30 +1,54 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
+import DefaultLayout from '../components/DefaultLayout.vue';
+import GuestLayout from '../components/GuestLayout.vue';
 import MealsByName from '../views/MealsByName.vue';
 import MealsByLetter from '../views/MealsByLetter.vue'; // Corrected the typo here
 import MealsByIngredient from '../views/MealsByIngredient.vue';
+import MealDetails from '../views/MealDetails.vue';
+import YouTubeButton from '../components/YouTubeButton.vue';
+
+
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home,
-  },
-  {
-    path: '/by-name/:name?',
-    name: 'byName',
-    component: MealsByName,
-  },
-  {
-    path: '/by-letter/:letter?',
-    name: 'byLetter',
-    component: MealsByLetter,
-  },
-  {
-    path: '/By-ingredient/:ingredient?',
-    name: 'byIngredient',
-    component: MealsByIngredient, // Corrected the typo here
-  },
+    component: DefaultLayout,
+    children:[
+      {
+        path: '/',
+        name: 'home',
+        component: Home,
+      },
+      {
+        path: '/guest',
+        component: GuestLayout
+
+      },
+      {
+        path: '/by-name/:name?',
+        name: 'byName',
+        component: MealsByName,
+      },
+      {
+        path: '/by-letter/:letter?',
+        name: 'byLetter',
+        component: MealsByLetter,
+      },
+      {
+        path: '/By-ingredient/:ingredient?',
+        name: 'byIngredient',
+        component: MealsByIngredient, 
+      },
+      {
+        path:'/meal/:id',
+        name:'mealDetails',
+        component: MealDetails,
+      }
+    ]
+
+},
+ 
 ];
 
 const router = createRouter({

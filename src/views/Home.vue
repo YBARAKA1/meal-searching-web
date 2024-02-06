@@ -1,22 +1,11 @@
 <template>
-  <div class="flex flex-col p-8">
+  <div class="flex flex-col p-8 bg-gradient-to-r from-purple-800 via-purple-600 to-purple-400">
     <input
       v-model="searchQuery"
       type="text"
-      class="rounded border-2 border-gray-200 w-full"
+      class="rounded border-2 border-gray-200 w-full bg-gray-800 px-4 py-2"
       placeholder="Search for meals"
     />
-
-    <div class="flex justify-center gap-2 mt-2">
-  <router-link
-    v-for="letter in letters"
-    :to="{ name: 'byLetter', params: { letter } }"
-    :key="letter"
-    class="text-purple-600 hover:underline"
-  >
-    {{ letter }}
-  </router-link>
-</div>
   </div>
 </template>
 
@@ -25,7 +14,7 @@ import { ref, onMounted } from 'vue';
 import axiosClient from '../axiosClient.JS';
 
 const searchQuery = ref('');
-const letters = ref('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
+
 const ingredients = ref([]);
 
 onMounted(async () => {
