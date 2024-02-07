@@ -8,7 +8,7 @@
             v-for="letter in letters"
             :to="{ name: 'byLetter', params: { letter } }"
             :key="letter"
-            class="text-white hover:underline p-1"
+            class="text-white hover:underline p-0.5"
           >
             {{ letter }}
           </router-link>
