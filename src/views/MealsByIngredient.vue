@@ -10,7 +10,7 @@
   import Meals from '../components/Meals.vue'
 
   
-  const route = useRoute(); // Corrected variable name to 'route'
+  const route = useRoute(); 
   const meals = computed(() => store.state.mealsByIngredient)
   
   onMounted(() => {

@@ -1,29 +1,24 @@
 <template>
   <div class="flex flex-col p-8 bg-gradient-to-r from-purple-800 via-purple-600 to-purple-400">
-    <input
-      v-model="searchQuery"
-      type="text"
-      class="rounded border-2 border-gray-200 w-full bg-gray-800 px-4 py-2"
-      placeholder="Search for meals"
-    />
-  </div>
+    <h1 class=" text-3xl text-center font-bold">ALL MEALS</h1>
+    </div>
+    <Meals :meals="meals" />
+
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import axiosClient from '../axiosClient.JS';
+import { computed, onMounted, ref } from "vue";
+import store from "../store";
+import Meals from "../components/Meals.vue";
+import axiosClient from "../axiosClient.js";
 
-const searchQuery = ref('');
-
-const ingredients = ref([]);
+const meals = ref([]);
 
 onMounted(async () => {
-  try {
-    const response = await axiosClient.get('/list.php?i=list');
-    console.log(response.data);
-    ingredients.value = response.data;
-  } catch (error) {
-    console.error('Error fetching data:', error);
+  for (let i = 0; i < 10; i++) {
+    axiosClient
+      .get(`random.php`)
+      .then(({ data }) => meals.value.push(data.meals[0]));
   }
 });
 </script>

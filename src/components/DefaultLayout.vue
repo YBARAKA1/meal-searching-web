@@ -3,7 +3,8 @@
     <navbar/>
 
     <main>
-      <router-view />
+      <div class="max-w-[1700px] mx-auto"><router-view />
+      </div>
       <div class="text-gray-500"> 
         
       </div>

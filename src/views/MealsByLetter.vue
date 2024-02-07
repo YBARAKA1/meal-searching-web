@@ -1,31 +1,32 @@
-<template >
-    <div class="bg-black">
-    <div class="text-purple-600">
-    <div class="flex justify-center gap-2 mt-0 p-8 bg-gradient-to-r from-purple-800 via-purple-600 to-purple-400">
-  <router-link
-    v-for="letter in letters"
-    :to="{ name: 'byLetter', params: { letter } }"
-    :key="letter"
-    class="text-white hover:underline"
-  >
-    {{ letter }}
-  </router-link>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-8 bg-black">
-  <MealItem v-for = "meal of meals" :key="meal.idMeal" :meal="meal"/>
-</div>
+<template>
+  <div>
+    <div class="flex justify-center gap-2 p-8 bg-gradient-to-r from-purple-800 via-purple-600 to-purple-400">
+      <div>
+        <h1 class="orange-text text-3xl font-bold text-center mb-2" style="color: orange;">PICK A MEAL'S LETTER</h1>
+        <div>
+          <router-link
+            v-for="letter in letters"
+            :to="{ name: 'byLetter', params: { letter } }"
+            :key="letter"
+            class="text-white hover:underline p-1"
+          >
+            {{ letter }}
+          </router-link>
+        </div>
+      </div>
     </div>
-</div>
+    <Meals :meals="meals"/>
+  </div>
 </template>
-
 <script setup>
 
 import store from '../store';
 import { computed } from '@vue/reactivity';
 import { useRoute } from 'vue-router';
 import { onMounted, watch } from 'vue';
+import Meals from '../components/Meals.vue'
 
-import MealItem from '../components/MealItem.vue';
+
 
 
 const route = useRoute();
